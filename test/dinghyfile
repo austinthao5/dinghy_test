@@ -1,0 +1,19 @@
+{
+    "application": "test",
+    "pipelines": [
+        {
+            "application": "test",
+            "name": "Second Dinghyfile Test",
+            "keepWaitingPipelines": false,
+            "limitConcurrent": true,
+            "stages": [{
+                "name": "Wait",
+                "refId": "1",
+                "requisiteStageRefIds": [],
+                "type": "wait",
+                "waitTime": 5
+            }],
+            "triggers": []
+        }
+    ]
+}
