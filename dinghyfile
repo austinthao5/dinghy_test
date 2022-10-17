@@ -14,7 +14,7 @@
                 "waitTime": 10
             }],
             "triggers": []
-        }
+        },
         {
             "application": "test",
             "name": "second pieline",
