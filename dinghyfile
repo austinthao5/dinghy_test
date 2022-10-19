@@ -1,19 +1,6 @@
 {
     "application": "test",
     "pipelines": [
-        {
-            "application": "test",
-            "name": "first pipeline",
-            "keepWaitingPipelines": false,
-            "limitConcurrent": true,
-            "stages": [{
-                "name": "Wait",
-                "refId": "1",
-                "requisiteStageRefIds": [],
-                "type": "wait",
-                "waitTime": 14
-            }],
-            "triggers": []
-        }
+    {{ module wait.test.module }}
     ]
 }
