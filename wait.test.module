@@ -8,22 +8,7 @@
         "refId": "1",
         "requisiteStageRefIds": [],
         "type": "wait",
-        "waitTime": 10
+        "waitTime": 14
     }],
     "triggers": []
-},
-{
-    "application": "test",
-    "name": "second pieline",
-    "keepWaitingPipelines": false,
-    "limitConcurrent": true,
-    "stages": [{
-        "name": "Wait",
-        "refId": "1",
-        "requisiteStageRefIds": [],
-        "type": "wait",
-        "waitTime": 11
-    }],
-    "triggers": []
-
 }
