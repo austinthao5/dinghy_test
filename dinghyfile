@@ -1,6 +1,6 @@
 {
     "application": "test",
     "pipelines": [
-    {{ module wait.test.module }}
+        {{ module wait.test.module }}
     ]
 }
