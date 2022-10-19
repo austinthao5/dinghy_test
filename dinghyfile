@@ -1,8 +1,8 @@
 {
-    "application": "test",
+    "application": "hellosign",
     "pipelines": [
         {
-            "application": "test",
+            "application": "hellosign",
             "name": "first pipeline",
             "keepWaitingPipelines": false,
             "limitConcurrent": true,
