@@ -1,7 +1,29 @@
 {
-  "name": "{{ var "name" ?: "Wait Stage Update Test Austin" }}",
-  "refId": "1",
-  "requisiteStageRefIds": [],
-  "type": "wait",
-  "waitTime": {{ var "waitTime" ?: 10 }}
+    "application": "test",
+    "name": "first pipeline",
+    "keepWaitingPipelines": false,
+    "limitConcurrent": true,
+    "stages": [{
+        "name": "Wait",
+        "refId": "1",
+        "requisiteStageRefIds": [],
+        "type": "wait",
+        "waitTime": 10
+    }],
+    "triggers": []
+},
+{
+    "application": "test",
+    "name": "second pieline",
+    "keepWaitingPipelines": false,
+    "limitConcurrent": true,
+    "stages": [{
+        "name": "Wait",
+        "refId": "1",
+        "requisiteStageRefIds": [],
+        "type": "wait",
+        "waitTime": 11
+    }],
+    "triggers": []
+
 }
