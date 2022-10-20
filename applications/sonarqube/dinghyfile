@@ -1,4 +1,5 @@
 {
+    "application": "test",
     "pipelines": [
     {{ local_module "applications/sonarqube/local_modules/pipeline.sonarqube.deploy.qa" }}
     ]
