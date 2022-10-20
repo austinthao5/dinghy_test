@@ -1,4 +1,6 @@
 {
+  "application": "test",
+  "name": "test pipeline 1",
   "appConfig": {},
   "disabled": false,
   "keepWaitingPipelines": false,
