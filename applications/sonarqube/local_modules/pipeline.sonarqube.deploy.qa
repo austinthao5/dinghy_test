@@ -1,5 +1,5 @@
 {
-    "application": "test",
+    "application": "sonarqube",
     "name": "second pipeline",
     "keepWaitingPipelines": false,
     "limitConcurrent": true,
