@@ -1,6 +1,6 @@
 {
   "application": "sonarqube",
-  "name": "first pipeline",
+  "name": "sonarqube-deploy-qa",
   "appConfig": {},
   "disabled": false,
   "keepWaitingPipelines": false,
