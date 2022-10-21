@@ -1,5 +1,5 @@
 {
-  "application": "test",
+  "application": "sonarqube",
   "name": "third pipeline",
   "appConfig": {},
   "disabled": false,
