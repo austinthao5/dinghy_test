@@ -1,14 +1,200 @@
 {
-    "application": "sonarqube",
-    "name": "sonarqube-deploy-prod",
-    "keepWaitingPipelines": false,
-    "limitConcurrent": true,
-    "stages": [{
-        "name": "Wait",
-        "refId": "1",
-        "requisiteStageRefIds": [],
-        "type": "wait",
-        "waitTime": 15
-    }],
-    "triggers": []
+  "application": "sonarqube",
+  "name": "sonarqube-deploy-prod",
+  "appConfig": {},
+  "disabled": false,
+  "keepWaitingPipelines": false,
+  "lastModifiedBy": "darrentong@dropbox.com",
+  "limitConcurrent": true,
+  "parameterConfig": [],
+  "schema": "1",
+  "spelEvaluator": "v4",
+  "stages": [
+    {
+      "clusters": [
+        {
+          "account": "prod",
+          "application": "sonarqube",
+          "availabilityZones": {
+            "us-east-1": [
+              "us-east-1a",
+              "us-east-1d",
+              "us-east-1e",
+              "us-east-1c"
+            ]
+          },
+          "base64UserData": "${ #toBase64(\"sonarqube\") }",
+          "capacity": {
+            "desired": 1,
+            "max": 1,
+            "min": 1
+          },
+          "cloudProvider": "aws",
+          "cooldown": 10,
+          "copySourceCustomBlockDeviceMappings": false,
+          "delayBeforeDisableSec": "30",
+          "delayBeforeScaleDownSec": "30",
+          "ebsOptimized": true,
+          "enabledMetrics": [],
+          "freeFormDetails": "",
+          "healthCheckGracePeriod": "300",
+          "healthCheckType": "EC2",
+          "iamRole": "",
+          "instanceMonitoring": true,
+          "instanceType": "m5.large",
+          "interestingHealthProviderNames": [
+            "Amazon"
+          ],
+          "keyPair": "spinnaker-keypair",
+          "loadBalancers": [
+            "sonarqube-lb-prod"
+          ],
+          "maxRemainingAsgs": 2,
+          "moniker": {
+            "app": "sonarqube",
+            "stack": "prod"
+          },
+          "pipelineBeforeCleanup": {
+            "application": "",
+            "pipelineId": ""
+          },
+          "provider": "aws",
+          "rollback": {
+            "onFailure": true
+          },
+          "scaleDown": true,
+          "securityGroups": [
+            "sg-ee507f96",
+            "sg-f0507f88",
+            "sg-fbbb6d8f"
+          ],
+          "spelLoadBalancers": [],
+          "spelTargetGroups": [],
+          "spotPrice": "",
+          "stack": "prod",
+          "strategy": "redblack",
+          "subnetType": "prod-private",
+          "suspendedProcesses": [],
+          "tags": {
+            "Environment": "prod",
+            "Name": "prod-sonarqube",
+            "Node": "sonarqube"
+          },
+          "targetGroups": [],
+          "targetHealthyDeployPercentage": 100,
+          "terminationPolicies": [
+            "OldestInstance"
+          ],
+          "useAmiBlockDeviceMappings": true,
+          "useSourceCapacity": false
+        }
+      ],
+      "name": "Deploy",
+      "notifications": [
+        {
+          "address": "eng-hs-qa",
+          "level": "stage",
+          "message": {
+            "stage.complete": {
+              "text": "Sonarqube nodes have successfully deployed to Staging."
+            }
+          },
+          "type": "slack",
+          "when": [
+            "stage.complete",
+            "stage.failed"
+          ]
+        }
+      ],
+      "refId": "4",
+      "requisiteStageRefIds": [
+        "7"
+      ],
+      "sendNotifications": true,
+      "type": "deploy"
+    },
+    {
+      "amiName": "sonarqube-prod",
+      "amiSuffix": "-pending",
+      "baseAmi": "${ #stage('Find Image from Tags')['context']['amiDetails'][0]['imageId'] }",
+      "baseLabel": "release",
+      "baseName": "sonarqube-prod",
+      "baseOs": "ubuntu",
+      "cloudProviderType": "aws",
+      "extendedAttributes": {
+        "aws_instance_type": "m5.large"
+      },
+      "name": "Bake SonarQube",
+      "notifications": [
+        {
+          "address": "eng-devops-builds",
+          "level": "stage",
+          "type": "slack",
+          "when": [
+            "stage.failed"
+          ]
+        }
+      ],
+      "rebake": true,
+      "refId": "7",
+      "regions": [
+        "us-east-1"
+      ],
+      "requisiteStageRefIds": [
+        "8"
+      ],
+      "sendNotifications": true,
+      "stageTimeoutMs": 3600000,
+      "storeType": "ebs",
+      "templateFileName": "../../files/armory-target-basic.json",
+      "type": "bake",
+      "user": "cbosman@hellosign.com",
+      "varFileName": "../../files/prod-sonarqube.json",
+      "vmType": "hvm"
+    },
+    {
+      "cloudProvider": "aws",
+      "cloudProviderType": "aws",
+      "name": "Find Image from Tags",
+      "packageName": "ubuntu-bionic-hvm-encr-",
+      "refId": "8",
+      "regions": [
+        "us-east-1"
+      ],
+      "requisiteStageRefIds": [],
+      "tags": {
+        "Account": "prod",
+        "AmiType": "base",
+        "Name": "ubuntu-bionic-hvm-encr"
+      },
+      "type": "findImageFromTags"
+    },
+    {
+      "allowDeleteActive": false,
+      "cloudProvider": "aws",
+      "cloudProviderType": "aws",
+      "cluster": "sonarqube-prod",
+      "completeOtherBranchesThenFail": true,
+      "continuePipeline": false,
+      "credentials": "prod",
+      "failPipeline": false,
+      "moniker": {
+        "app": "sonarqube",
+        "cluster": "sonarqube-prod",
+        "stack": "prod"
+      },
+      "name": "Destroy Oldest Server Group",
+      "refId": "9",
+      "regions": [
+        "us-east-1"
+      ],
+      "requisiteStageRefIds": [
+        "4"
+      ],
+      "retainLargerOverNewer": "false",
+      "shrinkToSize": 2,
+      "type": "shrinkCluster"
+    }
+  ],
+  "triggers": []
 }
