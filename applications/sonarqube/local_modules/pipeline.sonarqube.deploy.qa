@@ -1,6 +1,6 @@
 {
     "application": "sonarqube",
-    "name": "second pipeline",
+    "name": "second pipeline test",
     "keepWaitingPipelines": false,
     "limitConcurrent": true,
     "stages": [{
