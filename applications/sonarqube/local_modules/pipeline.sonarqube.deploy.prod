@@ -1,6 +1,6 @@
 {
   "application": "sonarqube",
-  "name": "sonarqube-deploy-prod",
+  "name": "sonarqube-deploy-prod-test",
   "appConfig": {},
   "disabled": false,
   "keepWaitingPipelines": false,
