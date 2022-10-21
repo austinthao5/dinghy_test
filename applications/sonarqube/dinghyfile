@@ -1,6 +1,8 @@
 {
   "application": "sonarqube",
   "pipelines": [
-    {{module "applications/sonarqube/local_modules/pipeline.sonarqube.deploy.qa"}}
+    {{local_module "local_modules/pipeline.sonarqube.deploy.qa"}},
+    {{local_module "local_modules/pipeline.sonarqube.deploy.staging"}},
+    {{local_module "local_modules/pipeline.sonarqube.deploy.prod"}}
   ]
 }
