@@ -1,0 +1,14 @@
+{
+    "application": "test",
+    "name": "third pipeline",
+    "keepWaitingPipelines": false,
+    "limitConcurrent": true,
+    "stages": [{
+        "name": "Wait",
+        "refId": "1",
+        "requisiteStageRefIds": [],
+        "type": "wait",
+        "waitTime": 15
+    }],
+    "triggers": []
+}
