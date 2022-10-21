@@ -1,6 +1,6 @@
 {
   "application": "sonarqube",
-  "name": "third pipeline",
+  "name": "sonarqube-deploy-prod",
   "appConfig": {},
   "disabled": false,
   "keepWaitingPipelines": false,
