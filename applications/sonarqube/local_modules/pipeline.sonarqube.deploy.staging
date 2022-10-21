@@ -1,6 +1,6 @@
 {
-  "application": "test",
-  "name": "second pipeline",
+  "application": "sonarqube",
+  "name": "sonarqube-deploy-staging",
   "appConfig": {},
   "disabled": false,
   "keepWaitingPipelines": false,
