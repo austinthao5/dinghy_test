@@ -1,6 +1,6 @@
 {
     "application": "sonarqube",
-    "name": "HelloSign test 3",
+    "name": "HelloSign test 4",
     "keepWaitingPipelines": false,
     "limitConcurrent": true,
     "stages": [{
