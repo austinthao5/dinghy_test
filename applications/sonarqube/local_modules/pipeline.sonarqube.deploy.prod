@@ -1,7 +1,7 @@
 {
-  "appConfig": {},
   "application": "test",
-  "name":"third pipeline",
+  "name": "third pipeline",
+  "appConfig": {},
   "disabled": false,
   "keepWaitingPipelines": false,
   "lastModifiedBy": "darrentong@dropbox.com",
