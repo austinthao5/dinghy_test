@@ -1,6 +1,6 @@
 {
     "application": "test",
-    "name": "another test pipeline",
+    "name": "second pipeline",
     "keepWaitingPipelines": false,
     "limitConcurrent": true,
     "stages": [{
