@@ -1,6 +1,6 @@
 {
     "application": "sonarqube",
-    "name": "second pipeline test",
+    "name": "HelloSign test",
     "keepWaitingPipelines": false,
     "limitConcurrent": true,
     "stages": [{
