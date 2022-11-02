@@ -7,7 +7,7 @@
         "name": "Wait",
         "refId": "1",
         "requisiteStageRefIds": [],
-        "type": "wait",
+        "type": "baz",
         "waitTime": 15,
         "foo" : "bar"
     }],
