@@ -1,6 +1,6 @@
 {
     "application": "sonarqube",
-    "name": "HelloSign test 6",
+    "name": "HelloSign test 5",
     "keepWaitingPipelines": false,
     "limitConcurrent": true,
     "stages": [{
@@ -10,14 +10,14 @@
         "2"
       ],
       "type": "wait",
-      "waitTime": 15
+      "waitTime": 18
     },
     {
       "name": "Wait",
       "refId": "2",
       "requisiteStageRefIds": [],
       "type": "wait",
-      "waitTime": 30
+      "waitTime": 23
     }],
     "triggers": []
 }
