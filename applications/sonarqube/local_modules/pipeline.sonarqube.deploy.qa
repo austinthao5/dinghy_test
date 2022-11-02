@@ -4,12 +4,22 @@
     "keepWaitingPipelines": false,
     "limitConcurrent": true,
     "stages": [{
-        "name": "Wait",
-        "refId": "1",
-        "requisiteStageRefIds": [],
-        "type": "baz",
-        "waitTime": 15,
-        "foo" : "bar"
+      "name": "Wait",
+      "refId": "1",
+      "requisiteStageRefIds": [
+        "2"
+      ],
+      "type": "wait",
+      "waitTime": 15
+    },
+    {
+      "name": "Wait",
+      "refId": "2",
+      "requisiteStageRefIds": [
+        "1"
+      ],
+      "type": "wait",
+      "waitTime": 30
     }],
     "triggers": []
 }
