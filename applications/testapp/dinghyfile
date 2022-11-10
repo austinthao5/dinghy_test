@@ -1,0 +1,6 @@
+{
+  "application": "test",
+  "pipelines": [
+    {{module "applications/testapp/localmodules/test.module"}}
+  ]
+}
