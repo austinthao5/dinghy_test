@@ -1,6 +1,6 @@
 {
   "application": "sonarqube",
   "pipelines": [
-    {{local_module "applications/testapp/local_modules/test.some.module"}}
+    {{local_module "applications/testapp/localmodules/test.some.module"}}
   ]
 }
