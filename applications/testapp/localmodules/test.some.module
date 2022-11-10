@@ -1,1 +1,23 @@
-MODULE
+{
+    "application": "test",
+    "name": "Second dinghyfile pipeline",
+    "keepWaitingPipelines": false,
+    "limitConcurrent": true,
+    "stages": [{
+      "name": "Wait",
+      "refId": "1",
+      "requisiteStageRefIds": [
+        "2"
+      ],
+      "type": "wait",
+      "waitTime": 18
+    },
+    {
+      "name": "Wait",
+      "refId": "2",
+      "requisiteStageRefIds": [],
+      "type": "wait",
+      "waitTime": 23
+    }],
+    "triggers": []
+}
