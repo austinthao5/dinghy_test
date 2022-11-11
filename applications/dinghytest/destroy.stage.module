@@ -1,0 +1,182 @@
+   {
+      "allowScaleDownActive": true,
+      "cloudProvider": "aws",
+      "cloudProviderType": "aws",
+      "cluster": "jmoon-stack-testing",
+      "credentials": "jmoon-aws",
+      "moniker": {
+        "app": "jmoon",
+        "cluster": "jmoon-stack-testing",
+        "detail": "testing",
+        "stack": "stack"
+      },
+      "name": "Scale Down Cluster All Clusters",
+      "preferLargerOverNewer": "false",
+      "refId": "10",
+      "regions": [
+        "us-west-2"
+      ],
+      "remainingFullSizeServerGroups": 0,
+      "requisiteStageRefIds": [
+        "9"
+      ],
+      "type": "scaleDownCluster"
+    },
+    {
+      "action": "plan",
+      "artifacts": [
+        {
+          "account": "training-env-examples",
+          "artifact": {
+            "artifactAccount": "training-env-examples",
+            "id": "e0efc7b9-d20e-4445-acf1-7ec4d6ceb2cc",
+            "reference": "https://github.com/${parameters.orgRepo}.git",
+            "type": "git/repo",
+            "version": "${parameters.branch}"
+          }
+        }
+      ],
+      "backendArtifact": {
+        "account": "github",
+        "artifact": {
+          "artifactAccount": "github",
+          "id": "401ca8a1-9737-4794-ad38-b3a4b2e93a06",
+          "name": "https://api.github.com/repos/${parameters.orgRepo}/contents/${parameters.subdir}/backend.tf",
+          "reference": "https://api.github.com/repos/${parameters.orgRepo}/contents/${parameters.subdir}/backend.tf",
+          "type": "github/file",
+          "version": "${parameters.branch}"
+        }
+      },
+      "dir": "${parameters.subdir}",
+      "expectedArtifacts": [
+        {
+          "defaultArtifact": {
+            "customKind": true,
+            "id": "0180047d-5984-464b-9379-babdbbbec9ad"
+          },
+          "displayName": "lucky-chicken-98",
+          "id": "5001aba2-bf4b-4dcd-a676-a4e5ec2cac06",
+          "matchArtifact": {
+            "artifactAccount": "embedded-artifact",
+            "id": "52d9dafd-18f5-4ff5-8ec0-0a743da39e70",
+            "name": "planfile",
+            "type": "embedded/base64"
+          },
+          "useDefaultArtifact": false,
+          "usePriorArtifact": false
+        }
+      ],
+      "name": "Terraform Plan Destroy",
+      "overrides": {
+        "region": "us-west-2",
+        "s3_bucket_name": "${parameters.createBucketName}"
+      },
+      "planForDestroy": true,
+      "refId": "11",
+      "requisiteStageRefIds": [
+        "14"
+      ],
+      "targets": [],
+      "terraformVersion": "0.12.31",
+      "type": "terraform",
+      "workspace": "${parameters.workspace}"
+    },
+    {
+      "action": "destroy",
+      "artifacts": [
+        {
+          "account": "training-env-examples",
+          "artifact": {
+            "artifactAccount": "training-env-examples",
+            "id": "6159effe-58e7-4784-9d1d-dea72daa2f43",
+            "reference": "https://github.com/${parameters.orgRepo}.git",
+            "type": "git/repo",
+            "version": "${parameters.branch}"
+          }
+        },
+        {
+          "account": "",
+          "id": "5001aba2-bf4b-4dcd-a676-a4e5ec2cac06"
+        }
+      ],
+      "backendArtifact": {
+        "account": "github",
+        "artifact": {
+          "artifactAccount": "github",
+          "id": "bf4f6e89-6ad4-475b-8574-7bc4b308d646",
+          "name": "https://api.github.com/repos/${parameters.orgRepo}/contents/${parameters.subdir}/backend.tf",
+          "reference": "https://api.github.com/repos/${parameters.orgRepo}/contents/${parameters.subdir}/backend.tf",
+          "type": "github/file",
+          "version": "${parameters.branch}"
+        }
+      },
+      "dir": "${parameters.subdir}",
+      "name": "Terraform Destroy",
+      "overrides": {
+        "region": "us-west-2",
+        "s3_bucket_name": "${parameters.createBucketName}"
+      },
+      "refId": "12",
+      "requisiteStageRefIds": [
+        "13"
+      ],
+      "terraformVersion": "0.12.31",
+      "type": "terraform",
+      "workspace": "${parameters.workspace}"
+    },
+    {
+      "failPipeline": true,
+      "instructions": "Apply the Terraform Plan to destroy ${parameters.createBucketName}?",
+      "judgmentInputs": [],
+      "name": "Terraform Plan Destroy Manual Judgment",
+      "notifications": [],
+      "refId": "13",
+      "requisiteStageRefIds": [
+        "11"
+      ],
+      "type": "manualJudgment"
+    },
+    {
+      "account": "jmoon-kubernetes",
+      "alias": "runJob",
+      "application": "terraformer",
+      "cloudProvider": "kubernetes",
+      "credentials": "jmoon-kubernetes",
+      "manifest": {
+        "apiVersion": "batch/v1",
+        "kind": "Job",
+        "metadata": {
+          "generateName": "emptybucket-"
+        },
+        "spec": {
+          "backoffLimit": 0,
+          "template": {
+            "metadata": {
+              "name": "emptybucket"
+            },
+            "spec": {
+              "containers": [
+                {
+                  "command": [
+                    "/bin/sh",
+                    "-c",
+                    "aws s3 rm s3://${parameters.createBucketName} --recursive"
+                  ],
+                  "image": "alchen99/k8s-debug:latest",
+                  "name": "emptybucket"
+                }
+              ],
+              "restartPolicy": "Never"
+            }
+          },
+          "ttlSecondsAfterFinished": 600
+        }
+      },
+      "name": "Run Job Empty Bucket",
+      "refId": "14",
+      "requisiteStageRefIds": [
+        "10"
+      ],
+      "source": "text",
+      "type": "runJobManifest"
+    }
