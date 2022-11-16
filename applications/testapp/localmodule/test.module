@@ -10,7 +10,7 @@
         "2"
       ],
       "type": "wait",
-      "waitTime": 18
+      "waitTime": 19
     },
     {
       "name": "Wait",
