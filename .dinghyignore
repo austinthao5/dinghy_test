@@ -2,3 +2,4 @@
 *.pdf
 .dinghyignore
 *.java
+*.py
