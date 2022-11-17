@@ -1,0 +1,24 @@
+---
+application: "dinghytest"
+# You can do inline comments now
+globals:
+  waitTime: 42
+  retries: 5
+pipelines:
+- application: "dinghytest"
+  name: "My cool pipeline"
+  appConfig: {}
+  keepWaitingPipelines: false
+  limitConcurrent: true
+  stages:
+  - name: Wait For It...
+    refId: '1'
+    requisiteStageRefIds: []
+    type: wait
+    waitTime: 4
+  {{ module "some.stage.module" "something" }}
+  triggers: []
+{% endraw %}```
+
+*Note: YAML has strict spacing requirements.  Your modules must indent properly for the template to be rendered correctly.*
+
