@@ -3,7 +3,7 @@
     "pipelines": [
 {
   "application": "dinghytest",
-  "name": "DinghyThingy",
+  "name": "DinghyThingy1",
   "appConfig": {},
   "keepWaitingPipelines": false,
   "lastModifiedBy": "anonymous",
