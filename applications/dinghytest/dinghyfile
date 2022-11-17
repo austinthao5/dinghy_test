@@ -1,4 +1,3 @@
----
 application: "dinghytest"
 # You can do inline comments now
 globals:
@@ -18,7 +17,5 @@ pipelines:
     waitTime: 4
   {{ module "some.stage.module" "something" }}
   triggers: []
-{% endraw %}```
 
-*Note: YAML has strict spacing requirements.  Your modules must indent properly for the template to be rendered correctly.*
 
