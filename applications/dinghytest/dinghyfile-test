@@ -9,7 +9,8 @@
       "application": "dinghytest",
       "name": "Made By Armory Pipeline Templates",
       "stages": [
-        {{ module "wait.stage.module" "name" "global module overwrite-name" "waitTime" "100" }}
+        {{ local_module "wait.stage.module" "name" "This is a local module" }},
+        {{ module stage.minimal.wait.localmodule" "waitname" "This is a module" "waitTime" "100" }}
       ]
     }
   ]
