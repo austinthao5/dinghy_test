@@ -7,7 +7,7 @@
   "pipelines": [
     {
       "application": "dinghytest",
-      "name": "Made By Armory Pipeline Templates",
+      "name": "Module vs Local",
       "stages": [
         {{ local_module "/applications/stage.minimal.wait.localmodule" }},
         {{ local_module "/applications/stage.minimal.wait.localmodule" "waitname" "localmodule overwrite-name" "waitTime" "100" }},
