@@ -15,7 +15,6 @@ pipelines:
     requisiteStageRefIds: []
     type: wait
     waitTime: 4
-  {{ module "some.stage.module" "something" }}
   triggers: []
 
 
