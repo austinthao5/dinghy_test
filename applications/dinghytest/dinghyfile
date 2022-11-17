@@ -1,12 +1,17 @@
 {
   "application": "dinghytest",
+  "globals": {
+      "waitTime": "42",
+      "waitname": "localmodule default-name"
+  },
   "pipelines": [
     {
       "application": "dinghytest",
       "name": "Made By Armory Pipeline Templates",
       "stages": [
-        {{ local_module "wait.stage.module" "name" "This is a local module" }},
-        {{ module stage.minimal.wait.localmodule" "waitname" "This is a module" "waitTime" "100" }}
+        {{ local_module "/applications/stage.minimal.wait.localmodule" }},
+        {{ local_module "/applications/stage.minimal.wait.localmodule" "waitname" "localmodule overwrite-name" "waitTime" "100" }},
+        {{ module "stage.minimal.wait.module" "waitname" "global module overwrite-name" "waitTime" "100" }}
       ]
     }
   ]
