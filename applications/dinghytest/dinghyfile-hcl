@@ -1,0 +1,26 @@
+"application" = "Some App"
+"globals" = {
+    "waitTime" = 42
+}
+"pipelines" = [
+  {
+    "appConfig" = {}
+      "application" = "Some App"
+      "keepWaitingPipelines" = false
+      "limitConcurrent" = true
+      "name" = "Foo"
+      "stages" = [
+        {
+          "name" = "Wait For It..!"
+          "refId" = "1"
+          "requisiteStageRefIds" = []
+          "type" = "wait"
+          "waitTime" = 5
+        },
+        {
+            {{ module "some.stage.module" "something" }}
+        }
+      ]
+      "triggers" = []
+  }
+]
