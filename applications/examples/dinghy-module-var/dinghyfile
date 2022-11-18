@@ -9,7 +9,7 @@
       "application": "dinghytest",
       "name": "Module Var Global Pipeline",
       "stages": [
-        {{ local_module "applications/examples/modules/wait.stage.module" }}
+        {{ module "applications/examples/modules/wait.stage.module" }}
       ]
     }
   ]
