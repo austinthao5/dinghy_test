@@ -1,7 +1,7 @@
 {
   "application": "dinghytest",
   "globals": {
-      "waitTime": "42",
+      "waitTime": "43",
       "waitname": "localmodule default-name"
   },
   "pipelines": [
