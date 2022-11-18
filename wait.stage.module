@@ -1,7 +1,7 @@
 {
-  "name": "{{ var "name" ?: "Wait Stage Update Test" }}",
+  "name": "Module Stage",
   "refId": "1",
   "requisiteStageRefIds": [],
   "type": "wait",
-  "waitTime": {{ var "waitTime" ?: 10 }}
+  "waitTime": 12
 }
