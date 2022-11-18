@@ -6,7 +6,7 @@
       "name": "Module vs Local Module Pipeline",
       "stages": [
         {{ module "wait.stage.module" }},
-        {{ local_module "/applications/examples/modules-vs-locals/wait.stage.module" }}
+        {{ module "/applications/examples/modules-vs-locals/wait.stage.module" }}
       ]
     }
   ]
