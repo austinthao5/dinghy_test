@@ -3,15 +3,9 @@
   "pipelines": [
     {
       "application": "dinghytest",
-      "name": "Dinghy No Modules",
+      "name": "Dinghy Local Modules Test",
       "stages": [
-        {
-          "name": "Wait",
-          "refId": "1",
-          "requisiteStageRefIds": [],
-          "type": "wait",
-          "waitTime": 10
-        }
+        {{ local_module "/applications/examples/modules-vs-locals/localmodules/wait.stage.localmodule" }}
       ]
     }
   ]
