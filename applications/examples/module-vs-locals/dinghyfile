@@ -3,7 +3,7 @@
   "pipelines": [
     {
       "application": "opatest",
-      "name": "Module vs Local",
+      "name": "Local",
       "stages": [
         {{ local_module "/applications/examples/module-vs-locals/wait.stage.module" }}
       ]
