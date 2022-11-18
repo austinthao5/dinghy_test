@@ -5,7 +5,7 @@
       "application": "dinghytest",
       "name": "Dinghy Local Module Test",
       "stages": [
-        {{ local_module "applications/app2/localmodules/local.test.module" }}
+        {{ module "applications/app2/localmodules/local.test.module" }}
       ]
     }
   ]
