@@ -1,0 +1,7 @@
+{
+  "name": "Local Module",
+  "refId": "1",
+  "requisiteStageRefIds": [],
+  "type": "wait",
+  "waitTime": 10
+}
