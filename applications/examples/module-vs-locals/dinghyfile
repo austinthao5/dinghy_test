@@ -3,7 +3,7 @@
   "pipelines": [
     {
       "application": "dinghytest",
-      "name": "Dinghy Local Modules Test",
+      "name": "Dinghy Local Modules Test 2",
       "stages": [
         {{ local_module "applications/examples/module-vs-locals/wait.stage.module" }},
         {{ module "wait.stage.module" }}
