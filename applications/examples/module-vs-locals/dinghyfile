@@ -1,11 +1,17 @@
 {
-  "application": "opatest",
+  "application": "dinghytest",
   "pipelines": [
     {
-      "application": "opatest",
-      "name": "Local",
+      "application": "dinghytest",
+      "name": "Dinghy No Modules",
       "stages": [
-        {{ local_module "/applications/examples/module-vs-locals/wait.stage.module" }}
+        {
+          "name": "Wait",
+          "refId": "1",
+          "requisiteStageRefIds": [],
+          "type": "wait",
+          "waitTime": 10
+        }
       ]
     }
   ]
