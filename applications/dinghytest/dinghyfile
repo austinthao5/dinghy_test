@@ -1,20 +1,17 @@
 {
   "application": "dinghytest",
   "globals": {
-      "waitTime": "42"
+      "waitTime": "43",
+      "waitname": "localmodule default-name"
   },
   "pipelines": [
     {
       "application": "dinghytest",
-      "name": "Global Var",
+      "name": "Module vs Local",
       "stages": [
-        {
-          "name": "Wait",
-          "refId": "1",
-          "requisiteStageRefIds": [],
-          "type": "wait",
-          "waitTime": {{ var "waitTime" }}
-        }
+        {{ local_module "/applications/stage.minimal.wait.localmodule" }},
+        {{ local_module "/applications/stage.minimal.wait.localmodule" "waitname" "localmodule overwrite-name" "waitTime" "100" }},
+        {{ module "stage.minimal.wait.module" "waitname" "global module overwrite-name" "waitTime" "100" }}
       ]
     }
   ]
