@@ -1,15 +1,11 @@
 {
   "application": "dinghytest",
-  "globals": {
-      "waitTime": "42",
-      "waitname": "name from global var"
-  },
   "pipelines": [
     {
       "application": "dinghytest",
-      "name": "Module Var Global Pipeline",
+      "name": "SubModule Dinghyfile",
       "stages": [
-        {{ module "applications/examples/modules/wait.stage.module" }},
+        {{ module "applications/examples/modules/wait.name.module" }},
         "waitTime":  10,
         "type": "wait"
       ]
