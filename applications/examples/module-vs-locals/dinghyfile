@@ -5,7 +5,7 @@
       "application": "dinghytest",
       "name": "Module vs Local Module Pipeline",
       "stages": [
-        {{ module "applications/examples/modules-vs-locals/localmodules/wait.stage.localmodule" }}
+        {{ local_module "applications/examples/modules-vs-locals/localmodules/wait.stage.localmodule" }}
       ]
     }
   ]
