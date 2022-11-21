@@ -1,0 +1,18 @@
+{
+  "globals": {
+    "test": 123
+  },
+  {
+    "application": "dinghytest",
+    "globals: {},
+    "pipelines": [
+      {
+        "application": "dinghytest",
+        "name": "Dinghy Local Module Test",
+        "stages": [
+          {{ module "applications/app2/localmodules/local.test.module" }}
+        ]
+      }
+    ]
+  }
+  }
