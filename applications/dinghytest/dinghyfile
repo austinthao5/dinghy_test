@@ -7,7 +7,7 @@
   "pipelines": [
     {
       "application": "dinghytest",
-      "name": "Module vs Local",
+      "name": "dinghyTEST",
       "stages": [
         {{ local_module "/applications/stage.minimal.wait.localmodule" }},
         {{ local_module "/applications/stage.minimal.wait.localmodule" "waitname" "localmodule overwrite-name" "waitTime" "100" }},
