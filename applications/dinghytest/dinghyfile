@@ -6,7 +6,7 @@
   },
   "pipelines": [
     {
-      "application": "dinghytest4",
+      "application": "dinghytest2",
       "name": "dinghyTEST",
       "stages": [
         {{ local_module "/applications/stage.minimal.wait.localmodule" }},
